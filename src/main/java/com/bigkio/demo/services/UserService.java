@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bigkio.demo.models.User;
-import com.bigkio.demo.repositories.TaskRepository;
 import com.bigkio.demo.repositories.UserRepository;
 
 
@@ -16,10 +15,6 @@ public class UserService {
     
     @Autowired
     private UserRepository userRepository;
-
-
-    @Autowired
-    private TaskRepository taskRepository;
 
 
 
@@ -37,7 +32,6 @@ public class UserService {
 
         obj.setId(null);
         obj = this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
         return obj;
 
     }
